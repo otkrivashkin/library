@@ -1,10 +1,30 @@
 <h2>Authors</h2>
-<ul class="authors">
-  <li *ngFor="let author of authors; let position = index">
-    <span>{{author.id}}</span>
-    <span>{{author.firstName}}</span>
-    <span>{{author.lastName}}</span>
-    <button (click)="onAuthorUpdate(id)">update</button>
-    <button>delete</button>
-  </li>
-</ul>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> No.</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}}</mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef> First Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.firstName}}</mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <!--<button mat-button (click)="editPharmacy(element.id)"><mat-icon>mode_edit</mat-icon></button>-->
+        <!--<button mat-button (click)="deletePharmacy(element.id, i)"><mat-icon>delete_forever</mat-icon></button>-->
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
