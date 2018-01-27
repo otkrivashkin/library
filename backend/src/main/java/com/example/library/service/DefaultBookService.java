@@ -29,4 +29,9 @@ public class DefaultBookService extends DefaultCrudSupport<Book> implements Book
                 .map(BookView::fromBook)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public BookView findBookById(Long id) {
+        return BookView.fromBook(bookRepository.findOne(id));
+    }
 }

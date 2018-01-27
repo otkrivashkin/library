@@ -42,9 +42,11 @@ import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CdkTableModule} from "@angular/cdk/table";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { AuthorDetailsComponent } from './author-details/author-details.component';
 
 const routes: Routes = [
-  {path: 'authors', component: AuthorListComponent}
+  {path: 'authors', component: AuthorListComponent},
+  {path: 'authors/:id', component: AuthorDetailsComponent}
 ];
 
 @NgModule({
@@ -108,6 +110,7 @@ const routes: Routes = [
   ],
   declarations: [
     AuthorListComponent,
+    AuthorDetailsComponent,
   ],
   providers: [
     AuthorService

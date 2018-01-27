@@ -29,4 +29,9 @@ public class DefaultAuthorService extends DefaultCrudSupport<Author> implements 
                 .map(AuthorView::fromAuthor)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public AuthorView findAuthorById(Long id) {
+        return AuthorView.fromAuthor(authorRepository.findOne(id));
+    }
 }

@@ -1,0 +1,7 @@
+<h3>Title: {{book.title}}</h3>
+<p>Genre: {{book.genre}}</p>
+<p>Date of publication: {{book.publicationDate| date: 'dd-mm-yyyy'}}</p>
+<p>Authors</p>
+<ul>
+  <li *ngFor="let author of book.authors" (click)="onAuthorSelect(author.id)">{{author.firstName}} {{author.lastName}}</li>
+</ul>

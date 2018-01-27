@@ -14,4 +14,12 @@ public interface BookService extends CrudSupport<Book> {
      * @return list of books
      */
     List<BookView> getBooks();
+
+    /**
+     * Find book by id
+     *
+     * @param id of existing book
+     * @return Book View
+     */
+    BookView findBookById(Long id);
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthorService} from "../author.service";
-import {ExistingAuthor} from "../model/existing-author";
+import {Author} from "../model/author";
 import {MatTableDataSource} from "@angular/material";
 import {Subscription} from "rxjs/Subscription";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-author-list',
@@ -11,12 +12,14 @@ import {Subscription} from "rxjs/Subscription";
 })
 export class AuthorListComponent implements OnInit {
 
-  authors: ExistingAuthor[] = [];
-  displayedColumns = ['id', 'firstName', 'actions'];
-  dataSource: MatTableDataSource<ExistingAuthor>;
+  authors: Author[] = [];
+
+  displayedColumns = ['id', 'firstName', 'lastName', 'actions'];
+  dataSource: MatTableDataSource<Author>;
   subscriptions: Subscription[] = [];
 
-  constructor(private authorService: AuthorService) { }
+  constructor(private authorService: AuthorService,
+              private router: Router) { }
 
   ngOnInit() {
     const authorSubscriptions = this.authorService.getAuthors()
@@ -26,6 +29,10 @@ export class AuthorListComponent implements OnInit {
       },
         error => console.log(error));
     this.subscriptions.push(authorSubscriptions);
+  }
+
+  onAuthorSelect(id: number): void {
+    this.router.navigateByUrl(`authors/${id}`);
   }
 
 

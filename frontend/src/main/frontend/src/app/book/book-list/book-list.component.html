@@ -1,0 +1,42 @@
+<h2>Books</h2>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id</mat-header-cell>
+      <mat-cell *matCellDef="let book"> {{book.id}}</mat-cell>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Title</mat-header-cell>
+      <mat-cell *matCellDef="let book" (click)="onBookSelect(book.id)"> {{book.title}}</mat-cell>
+    </ng-container>
+
+    <!-- Genre Column -->
+    <ng-container matColumnDef="genre">
+      <mat-header-cell *matHeaderCellDef> Genre</mat-header-cell>
+      <mat-cell *matCellDef="let book" (click)="onBookSelect(book.id)">{{book.genre}}</mat-cell>
+    </ng-container>
+
+    <!-- Publication Date Column -->
+    <ng-container matColumnDef="publicationDate">
+      <mat-header-cell *matHeaderCellDef> Publication Date</mat-header-cell>
+      <mat-cell *matCellDef="let book" (click)="onBookSelect(book.id)">{{book.publicationDate| date: 'dd-mm-yyyy'}}</mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
+      <mat-cell *matCellDef="let book">
+        <button mat-button ><mat-icon>mode_edit</mat-icon></button>
+        <button mat-button><mat-icon>delete_forever</mat-icon></button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

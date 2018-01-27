@@ -3,22 +3,28 @@
 <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">
 
-    <!-- Position Column -->
+    <!-- Id Column -->
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> No.</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.id}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef> Id</mat-header-cell>
+      <mat-cell *matCellDef="let author"> {{author.id}}</mat-cell>
     </ng-container>
 
-    <!-- Name Column -->
+    <!-- First Name Column -->
     <ng-container matColumnDef="firstName">
       <mat-header-cell *matHeaderCellDef> First Name</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.firstName}}</mat-cell>
+      <mat-cell *matCellDef="let author" (click)="onAuthorSelect(author.id)"> {{author.firstName}}</mat-cell>
+    </ng-container>
+
+    <!-- Last Name Column -->
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef> Last Name</mat-header-cell>
+      <mat-cell *matCellDef="let author" (click)="onAuthorSelect(author.id)">{{author.lastName}}</mat-cell>
     </ng-container>
 
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
-      <mat-cell *matCellDef="let element">
+      <mat-cell *matCellDef="let author">
         <button mat-button ><mat-icon>mode_edit</mat-icon></button>
         <button mat-button><mat-icon>delete_forever</mat-icon></button>
       </mat-cell>

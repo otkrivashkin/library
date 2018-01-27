@@ -14,4 +14,12 @@ public interface AuthorService extends CrudSupport<Author> {
      * @return list of all existing authors
      */
     List<AuthorView> getAuthors();
+
+    /**
+     * Get author by id
+     *
+     * @param id of existing author
+     * @return AuthorView
+     */
+    AuthorView findAuthorById(Long id);
 }

@@ -1,6 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import {RouterModule, Routes} from "@angular/router";
+import { BookDetailsComponent } from './book-details/book-details.component';
+import {BookService} from "./book.service";
+import { BookListComponent } from './book-list/book-list.component';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -35,27 +38,19 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
-
-import { AppComponent } from './app.component';
-import {AuthorModule} from "./author/author.module";
-import {RouterModule, Routes} from "@angular/router";
-import {BookModule} from "./book/book.module";
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import {CdkTableModule} from "@angular/cdk/table";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
-import {CommonModule} from "@angular/common";
-
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CdkTableModule} from "@angular/cdk/table";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {BrowserModule} from "@angular/platform-browser";
 const routes: Routes = [
-  {path: '', redirectTo: '/authors', pathMatch: 'full'}
+  {path: 'books', component: BookListComponent},
+  {path: 'books/:id', component: BookDetailsComponent}
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavMenuComponent,
-  ],
   imports: [
+    RouterModule.forRoot(routes),
     CommonModule,
     HttpClientModule,
     MatAutocompleteModule,
@@ -111,11 +106,8 @@ const routes: Routes = [
     MatSortModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    AuthorModule,
-    BookModule,
-    RouterModule.forRoot(routes),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [BookDetailsComponent, BookListComponent],
+  providers: [BookService]
 })
-export class AppModule { }
+export class BookModule { }
