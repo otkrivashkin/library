@@ -17,13 +17,13 @@ public class AuthorView {
     private Long id;
     private String firstName;
     private String lastName;
-    private List<ExistBookView> bookViews;
+    private List<ExistBookView> books;
 
     private AuthorView(final Author author) {
         this.id = author.getId();
         this.firstName = author.getFirstName();
         this.lastName = author.getLastName();
-        this.bookViews = author.getBooks().stream()
+        this.books = author.getBooks().stream()
         .map(ExistBookView::fromBook)
         .collect(Collectors.toList());
     }

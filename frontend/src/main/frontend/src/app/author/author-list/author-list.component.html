@@ -1,4 +1,8 @@
-<p>
-  author-list works!
-  {{authors|json}}
-</p>
+<h2>Authors</h2>
+<ul class="authors">
+  <li *ngFor="let author of authors">
+    <span>{{author.id}}</span>
+    <span>{{author.firstName}}</span>
+    <span>{{author.lastName}}</span>
+  </li>
+</ul>

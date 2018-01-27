@@ -8,14 +8,10 @@ import {Http} from "@angular/http";
 })
 export class AppComponent implements OnInit {
 
-  constructor(private http: Http) {
-    this.http.get('http://localhost:8080/api').subscribe(data => console.log(data))
+  constructor() {
   }
 
   ngOnInit(): void {
 
   }
-  title:any = 'app works!';
-
-
 }
