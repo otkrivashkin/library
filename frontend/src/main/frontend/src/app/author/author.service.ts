@@ -15,4 +15,8 @@ export class AuthorService {
   findAuthorById(id: number): Observable<Author> {
     return this.httpClient.get<Author>(`http://localhost:8080/api/authors/${id}`);
   }
+
+  deleteAuthorById(id: number): Observable<Response> {
+    return this.httpClient.delete<Response>(`http://localhost:8080/api/authors/${id}`);
+  }
 }

@@ -28,7 +28,7 @@ public class Author extends AbstractVersional {
 
     private String lastName;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinTable(name = "author_book",
             joinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"))

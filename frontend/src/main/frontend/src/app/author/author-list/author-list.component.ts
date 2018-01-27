@@ -35,6 +35,18 @@ export class AuthorListComponent implements OnInit {
     this.router.navigateByUrl(`authors/${id}`);
   }
 
+  onAuthorDelete(id: number, index: number): void {
+    this.authorService.deleteAuthorById(id).subscribe(
+      success => {
+        this.authors.splice(index, 1);
+        this.dataSource = new MatTableDataSource(this.authors);
+      },
+      error => console.log(error));
+
+
+    console.log(index);
+  }
+
 
 
 }
