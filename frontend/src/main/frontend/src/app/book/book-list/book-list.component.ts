@@ -14,7 +14,7 @@ export class BookListComponent implements OnInit {
 
   books: Book[];
 
-  displayedColumns = ['id', 'title', 'genre', 'publicationDate', 'actions'];
+  displayedColumns = ['id', 'title', 'genre', 'author', 'publicationDate', 'actions'];
   dataSource: MatTableDataSource<Book>;
   subscriptions: Subscription[] = [];
 
