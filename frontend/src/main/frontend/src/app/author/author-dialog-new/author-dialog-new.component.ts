@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-author-dialog-new',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorDialogNewComponent implements OnInit {
 
-  constructor() { }
+  newAuthorForm: FormGroup;
 
-  ngOnInit() {
+  constructor(
+    public dialogRef: MatDialogRef<AuthorDialogNewComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private fb: FormBuilder) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm(): void {
+    this.newAuthorForm = this.fb.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]]
+    });
+  }
+
+  createAuthor(): void {
+    const value = this.newAuthorForm.value;
+    this.dialogRef.close(value);
   }
 
 }

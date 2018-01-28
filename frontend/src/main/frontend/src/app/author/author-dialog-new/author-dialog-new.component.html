@@ -1,13 +1,23 @@
-<ol>
-  <li>
-    <mat-form-field>
-      <input matInput [(ngModel)]="name" placeholder="What's your name?">
-    </mat-form-field>
-  </li>
-  <li>
-    <button mat-raised-button (click)="openDialog()">Pick one</button>
-  </li>
-  <li *ngIf="animal">
-    You chose: <i>{{animal}}</i>
-  </li>
-</ol>
+<form [formGroup]="newAuthorForm" novalidate>
+
+  <mat-form-field class="form-control">
+    <input type="text" placeholder="First Name" name="firstName" value="{{author?.firstName}}"
+           matInput formControlName="firstName"/>
+  </mat-form-field>
+
+  <mat-form-field class="form-control">
+    <input type="text" placeholder="Last Name" name="lastName" value="{{author?.lastName}}"
+           matInput formControlName="lastName"/>
+  </mat-form-field>
+
+  <mat-card-actions fxLayout="row nowrap" fxLayoutAlign="end center" style="padding: 8px 15px 15px 15px;">
+    <button mat-button mat-raised-button color="primary" [disabled]="!newAuthorForm.valid" (click)="createAuthor()"
+            type="submit">
+      Create
+    </button>
+    <button mat-button mat-raised-button color="primary" (click)="onNoClick()"
+            type="reset" class="pull-right">
+      Cancel
+    </button>
+  </mat-card-actions>
+</form>

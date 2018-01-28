@@ -5,6 +5,8 @@ import com.example.library.model.view.NewEntityView;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+
 @Getter
 @Setter
 public class NewAuthorForm implements NewEntityView<Author> {
@@ -17,6 +19,7 @@ public class NewAuthorForm implements NewEntityView<Author> {
         Author author = new Author();
         author.setFirstName(firstName);
         author.setLastName(lastName);
+        author.setBooks(new ArrayList<>());
         return author;
     }
 }
