@@ -20,4 +20,8 @@ export class BookService {
   createBook(newBook: NewBook): Observable<Book> {
     return this.httpClient.post<Book>('http://localhost:8080/api/books', newBook);
   }
+
+  deleteBookById(id: number): Observable<Response> {
+    return this.httpClient.delete<Response>(`http://localhost:8080/api/books/${id}`);
+  }
 }

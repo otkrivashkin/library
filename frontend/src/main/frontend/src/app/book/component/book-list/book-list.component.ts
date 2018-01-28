@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Book} from "../../model/book";
 import {MatDialog, MatTableDataSource} from "@angular/material";
 import {Subscription} from "rxjs/Subscription";
@@ -21,14 +21,15 @@ export class BookListComponent implements OnInit {
 
   constructor(private bookService: BookService,
               private router: Router,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog) {
+  }
 
   ngOnInit() {
     const bookSubscriptions = this.bookService.getBooks()
       .subscribe(data => {
-        this.books = data;
-        this.dataSource = new MatTableDataSource<Book>(this.books)
-      },
+          this.books = data;
+          this.dataSource = new MatTableDataSource<Book>(this.books)
+        },
         error => console.log(error));
     this.subscriptions.push(bookSubscriptions)
   }
@@ -64,6 +65,15 @@ export class BookListComponent implements OnInit {
       console.log('The dialog was closed');
       console.log('Book = ', result)
     });
+  }
+
+  onBookDelete(id: number, index: number): void {
+    this.bookService.deleteBookById(id)
+      .subscribe(result => {
+          this.books.splice(index, 1);
+          this.updateDataSource();
+        },
+        error => console.log(error));
   }
 
   updateDataSource(): void {

@@ -6,6 +6,7 @@ import com.example.library.service.BookService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,5 +39,11 @@ public class BookController {
     public ResponseEntity<BookView> createBook(@RequestBody NewBookForm newBookForm) {
         BookView bookView = bookService.createBook(newBookForm);
         return new ResponseEntity<>(bookView, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/books/{id}")
+    public ResponseEntity deleteBookById(@PathVariable("id") Long id) {
+        bookService.delete(id);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
