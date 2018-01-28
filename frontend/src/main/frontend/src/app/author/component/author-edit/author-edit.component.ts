@@ -54,4 +54,8 @@ export class AuthorEditComponent implements OnInit {
         },
         error => console.log(error));
   }
+
+  onCancel() {
+    this.router.navigateByUrl('authors');
+  }
 }
