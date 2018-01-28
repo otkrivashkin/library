@@ -1,6 +1,7 @@
 package com.example.library.service;
 
 import com.example.library.model.Author;
+import com.example.library.model.form.EditAuthorForm;
 import com.example.library.model.form.NewAuthorForm;
 import com.example.library.model.view.AuthorView;
 import com.example.library.service.base.CrudSupport;
@@ -31,4 +32,11 @@ public interface AuthorService extends CrudSupport<Author> {
      * @return AuthorView
      */
     AuthorView createAuthor(NewAuthorForm newAuthorForm);
+
+    /**
+     * Edit existing author
+     *
+     * @param editAuthorForm is coming from ui
+     */
+    void editAuthor(EditAuthorForm editAuthorForm);
 }

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import { BookDetailsComponent } from './book-details/book-details.component';
-import {BookService} from "./book.service";
-import { BookListComponent } from './book-list/book-list.component';
+import { BookDetailsComponent } from './component/book-details/book-details.component';
+import {BookService} from "./service/book.service";
+import { BookListComponent } from './component/book-list/book-list.component';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -43,7 +43,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CdkTableModule} from "@angular/cdk/table";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
-import { BookDialogNewComponent } from './book-dialog-new/book-dialog-new.component';
+import { BookDialogNewComponent } from './component/book-dialog-new/book-dialog-new.component';
 const routes: Routes = [
   {path: 'books', component: BookListComponent},
   {path: 'books/:id', component: BookDetailsComponent}

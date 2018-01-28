@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AuthorListComponent} from "./author-list/author-list.component";
+import {AuthorListComponent} from "./component/author-list/author-list.component";
 import {RouterModule, Routes} from "@angular/router";
-import {AuthorService} from "./author.service";
+import {AuthorService} from "./service/author.service";
 import {HttpClientModule} from "@angular/common/http";
 import {
   MatAutocompleteModule,
@@ -42,52 +42,39 @@ import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CdkTableModule} from "@angular/cdk/table";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { AuthorDetailsComponent } from './author-details/author-details.component';
-import { AuthorDialogNewComponent } from './author-dialog-new/author-dialog-new.component';
+import { AuthorDetailsComponent } from './component/author-details/author-details.component';
+import { AuthorDialogNewComponent } from './component/author-dialog-new/author-dialog-new.component';
+import { AuthorEditComponent } from './component/author-edit/author-edit.component';
 
 const routes: Routes = [
   {path: 'authors', component: AuthorListComponent},
-  {path: 'authors/:id', component: AuthorDetailsComponent}
+  {path: 'authors/:id', component: AuthorDetailsComponent},
+  {path: 'authors/edit/:id', component: AuthorEditComponent}
 ];
 
 @NgModule({
   imports: [
+    RouterModule.forRoot(routes),
     CommonModule,
     HttpClientModule,
-    MatAutocompleteModule,
-    MatButtonModule,
     MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
     MatDatepickerModule,
-    MatDialogModule,
     MatExpansionModule,
-    MatGridListModule,
-    MatInputModule,
-    MatListModule,
     MatMenuModule,
     MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
     MatProgressSpinnerModule,
     MatRadioModule,
     MatRippleModule,
-    MatSelectModule,
     MatSidenavModule,
     MatSliderModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    MatSortModule,
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
     BrowserAnimationsModule,
-    MatIconModule,
-    FormsModule,
-    ReactiveFormsModule,
     CdkTableModule,
     FormsModule,
     MatInputModule,
@@ -107,12 +94,12 @@ const routes: Routes = [
     MatSortModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    RouterModule.forRoot(routes)
   ],
   declarations: [
     AuthorListComponent,
     AuthorDetailsComponent,
     AuthorDialogNewComponent,
+    AuthorEditComponent,
   ],
   providers: [
     AuthorService

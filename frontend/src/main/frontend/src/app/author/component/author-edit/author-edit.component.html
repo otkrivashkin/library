@@ -1,0 +1,35 @@
+<h1>Edit Author</h1>
+
+<form [formGroup]="editAuthorForm" novalidate>
+
+  <mat-form-field class="form-control">
+    <input type="text" placeholder="First Name" name="firstName" value="{{author?.firstName}}"
+           matInput formControlName="firstName"/>
+  </mat-form-field>
+
+  <mat-form-field class="form-control">
+    <input type="text" placeholder="Last Name" name="lastName" value="{{author?.lastName}}"
+           matInput formControlName="lastName"/>
+  </mat-form-field>
+
+  <mat-divider></mat-divider>
+  <h2>Books</h2>
+
+  <mat-chip-list formArrayName="books">
+    <mat-chip *ngFor="let book of books;">
+      {{ book.title }}
+    </mat-chip>
+  </mat-chip-list>
+
+  <br>
+  <mat-card-actions fxLayout="row nowrap" fxLayoutAlign="end center" style="padding: 8px 15px 15px 15px;">
+    <button mat-button mat-raised-button color="primary" [disabled]="!editAuthorForm.valid" (click)="editAuthor()"
+            type="submit">
+      Edit
+    </button>
+    <button mat-button mat-raised-button color="primary"
+            type="reset" class="pull-right">
+      Cancel
+    </button>
+  </mat-card-actions>
+</form>

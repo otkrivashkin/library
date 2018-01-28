@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDatepickerInputEvent, MatDialogRef} from "@angular/material";
-import {Author} from "../../author/model/author";
-import {AuthorService} from "../../author/author.service";
+import {Author} from "../../../author/model/author";
+import {AuthorService} from "../../../author/service/author.service";
 
 @Component({
   selector: 'app-book-dialog-new',

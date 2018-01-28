@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Author} from "../model/author";
-import {AuthorService} from "../author.service";
+import {Author} from "../../model/author";
+import {AuthorService} from "../../service/author.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({

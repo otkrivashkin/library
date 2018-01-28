@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
-import {Author} from "./model/author";
-import {NewAuthor} from "./model/new-author";
+import {Author} from "../model/author";
+import {NewAuthor} from "../model/new-author";
 
 @Injectable()
 export class AuthorService {
@@ -23,5 +23,9 @@ export class AuthorService {
 
   createAuthor(newAuthor: NewAuthor): Observable<Author> {
     return this.httpClient.post<Author>('http://localhost:8080/api/authors', newAuthor);
+  }
+
+  editAuthor(author: Author): Observable<Response> {
+    return this.httpClient.put<Response>('http://localhost:8080/api/authors', author);
   }
 }

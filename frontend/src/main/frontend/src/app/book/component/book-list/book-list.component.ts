@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Book} from "../model/book";
+import {Book} from "../../model/book";
 import {MatDialog, MatTableDataSource} from "@angular/material";
 import {Subscription} from "rxjs/Subscription";
-import {BookService} from "../book.service";
+import {BookService} from "../../service/book.service";
 import {Router} from "@angular/router";
 import {BookDialogNewComponent} from "../book-dialog-new/book-dialog-new.component";
 

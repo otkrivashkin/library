@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AuthorService} from "../author.service";
-import {Author} from "../model/author";
+import {AuthorService} from "../../service/author.service";
+import {Author} from "../../model/author";
 import {MatDialog, MatTableDataSource} from "@angular/material";
 import {Subscription} from "rxjs/Subscription";
 import {Router} from "@angular/router";
@@ -68,6 +68,10 @@ export class AuthorListComponent implements OnInit {
       console.log('The dialog was closed');
       console.log('Author = ', result)
     });
+  }
+
+  onAuthorEdit(id: number): void {
+    this.router.navigateByUrl(`authors/edit/${id}`);
   }
 
   updateDataSource(): void {
