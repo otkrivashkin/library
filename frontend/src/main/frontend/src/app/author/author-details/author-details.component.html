@@ -1,6 +1,8 @@
 <h3>First Name: {{author?.firstName}}</h3>
 <h3>Last Name: {{author?.lastName}}</h3>
-<p>Books</p>
-<ul>
-  <li *ngFor="let book of author?.books" (click)="onBookSelect(book?.id)">{{book?.title}}</li>
-</ul>
+<mat-divider></mat-divider>
+<h2>Books</h2>
+<ol>
+  <li *ngFor="let book of author?.books" (click)="onBookSelect(book?.id)">
+    <button mat-button color="primary">{{book?.title}}</button></li>
+</ol>
