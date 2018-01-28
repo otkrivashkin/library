@@ -25,8 +25,9 @@ public class Book extends AbstractVersional {
 
     private String title;
 
-    @ManyToMany(mappedBy = "books")
-    private List<Author> authors;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id")
+    private Author author;
 
     private String genre;
 
