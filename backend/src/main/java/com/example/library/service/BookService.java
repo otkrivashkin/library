@@ -1,6 +1,7 @@
 package com.example.library.service;
 
 import com.example.library.model.Book;
+import com.example.library.model.form.EditBookForm;
 import com.example.library.model.form.NewBookForm;
 import com.example.library.model.view.BookView;
 import com.example.library.service.base.CrudSupport;
@@ -31,4 +32,11 @@ public interface BookService extends CrudSupport<Book> {
      * @return BookView
      */
     BookView createBook(NewBookForm newBookForm);
+
+    /**
+     * Edit existing book
+     *
+     * @param editBookForm from ui
+     */
+    void editBook(EditBookForm editBookForm);
 }

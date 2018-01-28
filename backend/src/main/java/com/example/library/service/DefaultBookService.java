@@ -2,6 +2,7 @@ package com.example.library.service;
 
 import com.example.library.model.Author;
 import com.example.library.model.Book;
+import com.example.library.model.form.EditBookForm;
 import com.example.library.model.form.NewBookForm;
 import com.example.library.model.view.BookView;
 import com.example.library.repository.AuthorRepository;
@@ -9,6 +10,7 @@ import com.example.library.repository.BookRepository;
 import com.example.library.service.base.DefaultCrudSupport;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.Validator;
 import java.util.List;
@@ -41,6 +43,7 @@ public class DefaultBookService extends DefaultCrudSupport<Book> implements Book
         return BookView.fromBook(bookRepository.findOne(id));
     }
 
+    @Transactional
     @Override
     public BookView createBook(NewBookForm newBookForm) {
         final Book book = newBookForm.create();
@@ -48,5 +51,13 @@ public class DefaultBookService extends DefaultCrudSupport<Book> implements Book
         book.setAuthor(author);
         save(book);
         return BookView.fromBook(book);
+    }
+
+    @Transactional
+    @Override
+    public void editBook(EditBookForm editBookForm) {
+        Book book = bookRepository.findOne(editBookForm.getId());
+        editBookForm.update(book);
+        update(book);
     }
 }

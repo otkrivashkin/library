@@ -76,6 +76,10 @@ export class BookListComponent implements OnInit {
         error => console.log(error));
   }
 
+  onBookEdit(id: number): void {
+    this.router.navigateByUrl(`books/edit/${id}`)
+  }
+
   updateDataSource(): void {
     this.dataSource = new MatTableDataSource(this.books);
   }

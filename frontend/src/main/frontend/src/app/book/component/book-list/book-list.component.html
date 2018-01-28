@@ -37,7 +37,7 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
       <mat-cell *matCellDef="let book; let i = index">
-        <button mat-button ><mat-icon>mode_edit</mat-icon></button>
+        <button mat-button ><mat-icon (click)="onBookEdit(book.id)">mode_edit</mat-icon></button>
         <button mat-button><mat-icon (click)="onBookDelete(book.id, i)">delete_forever</mat-icon></button>
       </mat-cell>
     </ng-container>

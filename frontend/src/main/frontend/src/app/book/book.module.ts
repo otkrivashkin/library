@@ -44,9 +44,11 @@ import {CdkTableModule} from "@angular/cdk/table";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import { BookDialogNewComponent } from './component/book-dialog-new/book-dialog-new.component';
+import {BookEditComponent} from "./component/book-edit/book-edit.component";
 const routes: Routes = [
   {path: 'books', component: BookListComponent},
-  {path: 'books/:id', component: BookDetailsComponent}
+  {path: 'books/:id', component: BookDetailsComponent},
+  {path: 'books/edit/:id', component: BookEditComponent}
 ];
 
 @NgModule({
@@ -108,7 +110,7 @@ const routes: Routes = [
     MatPaginatorModule,
     MatFormFieldModule,
   ],
-  declarations: [BookDetailsComponent, BookListComponent, BookDialogNewComponent],
+  declarations: [BookDetailsComponent, BookListComponent, BookDialogNewComponent, BookEditComponent],
   providers: [BookService],
   entryComponents: [BookDialogNewComponent]
 })

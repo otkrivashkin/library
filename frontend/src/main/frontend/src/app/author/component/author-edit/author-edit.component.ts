@@ -50,7 +50,7 @@ export class AuthorEditComponent implements OnInit {
     this.authorService.editAuthor(author)
       .subscribe(result => {
           console.log(result);
-          this.router.navigateByUrl('/authors');
+          this.router.navigateByUrl('authors');
         },
         error => console.log(error));
   }

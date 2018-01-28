@@ -24,4 +24,8 @@ export class BookService {
   deleteBookById(id: number): Observable<Response> {
     return this.httpClient.delete<Response>(`http://localhost:8080/api/books/${id}`);
   }
+
+  editBook(book: Book): Observable<Response> {
+    return this.httpClient.put<Response>('http://localhost:8080/api/books', book);
+  }
 }

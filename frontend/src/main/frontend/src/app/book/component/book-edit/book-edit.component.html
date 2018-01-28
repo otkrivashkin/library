@@ -1,0 +1,35 @@
+<h1>Edit Book</h1>
+
+<form [formGroup]="editBookForm" novalidate>
+
+  <mat-form-field class="form-control">
+    <input type="text" placeholder="Title" name="title" value="{{book?.title}}"
+           matInput formControlName="title"/>
+  </mat-form-field>
+
+  <mat-form-field class="form-control">
+    <input type="text" placeholder="Genre" name="genre" value="{{book?.genre}}"
+           matInput formControlName="genre"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [formControl]="date" [matDatepicker]="picker" placeholder="Select publication date"
+           (dateInput)="addDate($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker ></mat-datepicker>
+  </mat-form-field>
+
+  <p>Author</p>
+  <h3>{{book?.author.firstName}} {{book?.author.lastName}}</h3>
+
+  <mat-card-actions fxLayout="row nowrap" fxLayoutAlign="end center" style="padding: 8px 15px 15px 15px;">
+    <button mat-button mat-raised-button color="primary" [disabled]="!editBookForm.valid" (click)="editBook()"
+            type="submit">
+      Edit
+    </button>
+    <button mat-button mat-raised-button color="primary"
+            type="reset" class="pull-right">
+      Cancel
+    </button>
+  </mat-card-actions>
+</form>
