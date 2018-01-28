@@ -12,13 +12,13 @@
     <!-- Title Column -->
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef> Title</mat-header-cell>
-      <mat-cell *matCellDef="let book" (click)="onBookSelect(book.title)"> {{book.title}}</mat-cell>
+      <mat-cell *matCellDef="let book" (click)="onBookSelect(book.id)"> {{book.title}}</mat-cell>
     </ng-container>
 
     <!-- Genre Column -->
     <ng-container matColumnDef="genre">
       <mat-header-cell *matHeaderCellDef> Genre</mat-header-cell>
-      <mat-cell *matCellDef="let book" (click)="onBookSelect(book.genre)">{{book.genre}}</mat-cell>
+      <mat-cell *matCellDef="let book" (click)="onBookSelect(book.id)">{{book.genre}}</mat-cell>
     </ng-container>
 
     <!-- Author Column -->
@@ -30,7 +30,7 @@
     <!-- Publication Date Column -->
     <ng-container matColumnDef="publicationDate">
       <mat-header-cell *matHeaderCellDef> Publication Date</mat-header-cell>
-      <mat-cell *matCellDef="let book" (click)="onBookSelect(book.publicationDate)">{{book.publicationDate| date: 'dd-mm-yyyy'}}</mat-cell>
+      <mat-cell *matCellDef="let book" (click)="onBookSelect(book.id)">{{book.publicationDate| date: 'dd-MM-yyyy'}}</mat-cell>
     </ng-container>
 
     <!-- Actions Column -->
@@ -46,3 +46,4 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 </div>
+<button mat-button (click)="onBookCreate()"><mat-icon>note_add</mat-icon></button>

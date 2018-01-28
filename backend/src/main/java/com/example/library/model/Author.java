@@ -15,7 +15,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.Objects.isNull;
 
 @Getter
 @Setter
@@ -30,4 +33,15 @@ public class Author extends AbstractVersional {
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private List<Book> books;
+
+    public void addBook(Book book) {
+        if (isNull(books)) {
+            books = new ArrayList<>();
+        }
+        books.add(book);
+    }
+
+    public void deleteBook(Long bookId) {
+        books.removeIf(book -> book.getId().equals(bookId));
+    }
 }

@@ -1,0 +1,40 @@
+<form [formGroup]="newBookForm" novalidate>
+
+  <mat-form-field class="form-control">
+    <input type="text" placeholder="Title" name="title" value="{{book?.title}}"
+           matInput formControlName="title"/>
+  </mat-form-field>
+
+  <mat-form-field class="form-control">
+    <input type="text" placeholder="Genre" name="genre" value="{{book?.genre}}"
+           matInput formControlName="genre"/>
+  </mat-form-field>
+
+  <mat-form-field class="form-control">
+    <mat-select placeholder="Select author" aria-label="Number" name="author" formControlName="author">
+      <mat-option
+        *ngFor="let author of authors"
+        [value]="author.id">
+        {{author.firstName}} {{author.lastName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Select publication date"
+           (dateInput)="addDate($event)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-card-actions fxLayout="row nowrap" fxLayoutAlign="end center" style="padding: 8px 15px 15px 15px;">
+    <button mat-button mat-raised-button color="primary" [disabled]="!newBookForm.valid" (click)="createBook()"
+            type="submit">
+      Create
+    </button>
+    <button mat-button mat-raised-button color="primary" (click)="onNoClick()"
+            type="reset" class="pull-right">
+      Cancel
+    </button>
+  </mat-card-actions>
+</form>

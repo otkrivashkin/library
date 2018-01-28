@@ -43,6 +43,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CdkTableModule} from "@angular/cdk/table";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
+import { BookDialogNewComponent } from './book-dialog-new/book-dialog-new.component';
 const routes: Routes = [
   {path: 'books', component: BookListComponent},
   {path: 'books/:id', component: BookDetailsComponent}
@@ -107,7 +108,8 @@ const routes: Routes = [
     MatPaginatorModule,
     MatFormFieldModule,
   ],
-  declarations: [BookDetailsComponent, BookListComponent],
-  providers: [BookService]
+  declarations: [BookDetailsComponent, BookListComponent, BookDialogNewComponent],
+  providers: [BookService],
+  entryComponents: [BookDialogNewComponent]
 })
 export class BookModule { }

@@ -1,6 +1,6 @@
-<h3>First Name: {{author.firstName}}</h3>
-<h3>Last Name: {{author.lastName}}</h3>
+<h3>First Name: {{author?.firstName}}</h3>
+<h3>Last Name: {{author?.lastName}}</h3>
 <p>Books</p>
 <ul>
-  <li *ngFor="let book of author.books" (click)="onBookSelect(book.id)">{{book.title}}</li>
+  <li *ngFor="let book of author?.books" (click)="onBookSelect(book?.id)">{{book?.title}}</li>
 </ul>

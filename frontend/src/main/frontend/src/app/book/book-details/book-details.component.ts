@@ -18,7 +18,10 @@ export class BookDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
-    this.bookService.findBookById(id).subscribe(data => this.book = data);
+    this.bookService.findBookById(id).subscribe(data => {
+      console.log('Book details = ', data);
+      this.book = data;
+    });
   }
 
   onAuthorSelect(id: number): void {

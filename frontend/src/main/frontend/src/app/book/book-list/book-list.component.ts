@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Book} from "../model/book";
-import {MatTableDataSource} from "@angular/material";
+import {MatDialog, MatTableDataSource} from "@angular/material";
 import {Subscription} from "rxjs/Subscription";
 import {BookService} from "../book.service";
 import {Router} from "@angular/router";
+import {BookDialogNewComponent} from "../book-dialog-new/book-dialog-new.component";
 
 @Component({
   selector: 'app-book-list',
@@ -19,7 +20,8 @@ export class BookListComponent implements OnInit {
   subscriptions: Subscription[] = [];
 
   constructor(private bookService: BookService,
-              private router: Router) { }
+              private router: Router,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
     const bookSubscriptions = this.bookService.getBooks()
@@ -33,6 +35,39 @@ export class BookListComponent implements OnInit {
 
   onBookSelect(id: number): void {
     this.router.navigateByUrl(`books/${id}`);
+  }
+
+  onBookCreate(): void {
+    let dialogRef = this.dialog.open(BookDialogNewComponent, {
+      width: '250px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        this.bookService.createBook(result).subscribe(
+          data => {
+            this.books.push(
+              {
+                id: data.id,
+                title: data.title,
+                genre: data.genre,
+                publicationDate: data.publicationDate,
+                author: data.author
+              }
+            );
+            this.updateDataSource();
+          },
+          error => console.log(error)
+        )
+      }
+      console.log('The dialog was closed');
+      console.log('Book = ', result)
+    });
+  }
+
+  updateDataSource(): void {
+    this.dataSource = new MatTableDataSource(this.books);
   }
 
 }
