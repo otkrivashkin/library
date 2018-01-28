@@ -43,6 +43,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CdkTableModule} from "@angular/cdk/table";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { AuthorDetailsComponent } from './author-details/author-details.component';
+import { AuthorDialogNewComponent } from './author-dialog-new/author-dialog-new.component';
 
 const routes: Routes = [
   {path: 'authors', component: AuthorListComponent},
@@ -111,9 +112,11 @@ const routes: Routes = [
   declarations: [
     AuthorListComponent,
     AuthorDetailsComponent,
+    AuthorDialogNewComponent,
   ],
   providers: [
     AuthorService
   ],
+  entryComponents: [AuthorDialogNewComponent]
 })
 export class AuthorModule { }

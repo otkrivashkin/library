@@ -42,9 +42,10 @@ export class AuthorListComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.authors);
       },
       error => console.log(error));
+  }
 
+  onAuthorCreate() {
 
-    console.log(index);
   }
 
 
