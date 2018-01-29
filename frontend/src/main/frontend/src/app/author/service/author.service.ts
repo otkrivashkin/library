@@ -10,22 +10,22 @@ export class AuthorService {
   constructor(private httpClient: HttpClient) { }
 
   getAuthors(): Observable<Author[]> {
-    return this.httpClient.get<Author[]>('http://localhost:8080/api/authors');
+    return this.httpClient.get<Author[]>('/api/authors');
   }
 
   findAuthorById(id: number): Observable<Author> {
-    return this.httpClient.get<Author>(`http://localhost:8080/api/authors/${id}`);
+    return this.httpClient.get<Author>(`/api/authors/${id}`);
   }
 
   deleteAuthorById(id: number): Observable<Response> {
-    return this.httpClient.delete<Response>(`http://localhost:8080/api/authors/${id}`);
+    return this.httpClient.delete<Response>(`/api/authors/${id}`);
   }
 
   createAuthor(newAuthor: NewAuthor): Observable<Author> {
-    return this.httpClient.post<Author>('http://localhost:8080/api/authors', newAuthor);
+    return this.httpClient.post<Author>('/api/authors', newAuthor);
   }
 
   editAuthor(author: Author): Observable<Response> {
-    return this.httpClient.put<Response>('http://localhost:8080/api/authors', author);
+    return this.httpClient.put<Response>('/api/authors', author);
   }
 }
