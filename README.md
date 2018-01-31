@@ -30,4 +30,5 @@ cd frontend/src/main/frontend run npm install
 **2. Start angular ui**
 ```bash
 cd frontend/src/main/frontend run npm start
+open http://localhost:4200
 ```
