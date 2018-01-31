@@ -55,5 +55,4 @@ public class AuthorController {
         authorService.editAuthor(editAuthorForm);
         return new ResponseEntity(HttpStatus.OK);
     }
-
 }
