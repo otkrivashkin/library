@@ -16,10 +16,11 @@ git clone https://github.com/otkrivashkin/library.git
 create database library
 ```
 **3. Change postgreSQL username and password as per your installation**
-+ open `src/main/resources/application.properties`
-+ change `spring.datasource.username` and `spring.datasource.password`
+```bash
+open src/main/resources/application.properties
+change spring.datasource.username and spring.datasource.password
 as per your postgresql installation
-
+```
 **4. Run src/main/java/LibraryApplication**
 #### FRONTEND
 **1. Install angular node modules**
@@ -28,5 +29,5 @@ cd frontend/src/main/frontend run npm install
 ```
 **2. Start angular ui**
 ```bash
-cd `frontend/src/main/frontend` run `npm start`
+cd frontend/src/main/frontend run npm start
 ```
